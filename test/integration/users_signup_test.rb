@@ -28,7 +28,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert_select 'div.alert-success'
-    assert_not 'flash.alert-danger'
+    assert is_logged_in?
+    # assert_not 'flash.alert-danger' <-- nie działa, sprawdzić czemu!
     #assert_not 'div.field_with_errors'
   end
 end
