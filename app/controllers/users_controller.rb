@@ -9,7 +9,6 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       log_in @user
       redirect_to @user
-
     else
       render 'new'
     end
@@ -23,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update

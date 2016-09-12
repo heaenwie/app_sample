@@ -4,12 +4,14 @@
     <section class="user_info">
       <h1><%= gravatar_for @user %> <%= @user.name %></h1>
     </section>
+    <p><%= link_to "Edit", edit_user_path(current_user) %></p>
     <section class="detailed_info">
       Email: <p><%= @user.email %></p>
       Created at: <p><%= @user.created_at %></p>
       Updated at: <p><%= @user.updated_at %></p>
     </section>
   </aside>
+
 </div>
 
 
