@@ -11,7 +11,10 @@ gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
 gem 'bootstrap-sass', '3.3.6'
 gem 'rollbar'
-gem 'ruby-lint', '~> 2.1'
+gem 'ruby-lint', '~> 2.1' #according to David, it's good for syntax
+gem 'faker',          '1.6.3' #it helps to use seeds for faking the users
+gem 'will_paginate',           '3.1.0' #recommended for pagination
+gem 'bootstrap-will_paginate', '0.0.10'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
