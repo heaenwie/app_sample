@@ -32,7 +32,7 @@ module SessionsHelper
   end
 
   def log_out()
-    forget(current_user) #dlaczego tu nie musi być '@'?
+    forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end

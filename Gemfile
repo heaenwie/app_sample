@@ -11,6 +11,7 @@ gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
 gem 'bootstrap-sass', '3.3.6'
 gem 'rollbar'
+gem 'ruby-lint', '~> 2.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
