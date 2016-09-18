@@ -3,7 +3,8 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
-    @otherUser = users(:archer)
+    @other_user = users(:archer)
+    @admin = users(:admin)
   end
 
   test "should get new" do
@@ -30,14 +31,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect edit when logged as a wrong user" do
-    log_in_as(@otherUser)
+    log_in_as(@other_user)
     get edit_user_path(@user)
     assert flash.empty?
     assert_redirected_to root_url
   end
 
   test "should redirect update when logged as a wrong user" do
-    log_in_as(@otherUser)
+    log_in_as(@other_user)
     patch user_path(@user), params: { user: { name: @user.name,
                                               email: @user.email } }
     assert flash.empty?
@@ -53,6 +54,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                             password_confirmation: 'password',
                                             admin: true } }
     assert_not @other_user.reload.admin?
+  end
+
+#tests for delete
+  test "should redirect destroyed user when not logged to login page" do
+      assert_no_difference 'User.count' do
+        delete user_path(@user)
+      end
+      assert_redirected_to login_url
+  end
+
+  test "should redirect destroyed user who are logged in as non-admin" do
+  log_in_as(@other_user)
+  assert_no_difference 'User.count' do
+    delete user_path(@user)
+  end
+  assert_redirected_to root_url
+  end
+
+  test "should be able to destroy user if logged as admin" do
+    log_in_as(@admin)
+    assert_difference 'User.count', -1 do
+      delete user_path(@user)
+    end
   end
 
 end
