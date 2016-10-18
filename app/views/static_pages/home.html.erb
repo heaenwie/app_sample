@@ -1,7 +1,7 @@
 
 <% provide(:title, "Home") %>
 <% if logged_in? %>
-  <%= render 'logged_homepage' %>
+  <%= render 'static_pages/logged_homepage' %>
 <% else %>
-  <%= render 'not_logged_homepage' %>
+  <%= render 'static_pages/not_logged_homepage' %>
 <% end %>
