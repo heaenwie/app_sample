@@ -11,7 +11,6 @@ gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
 gem 'bootstrap-sass', '3.3.6'
 gem 'rollbar'
-gem 'ruby-lint', '~> 2.1' #according to David, it's good for syntax
 gem 'faker',          '1.6.3' #it helps to use seeds for faking the users
 gem 'carrierwave',             '0.11.2'
 gem 'mini_magick',             '4.5.1'
@@ -22,7 +21,6 @@ gem 'bootstrap-will_paginate', '0.0.10'
 group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'byebug',  '9.0.0', platform: :mri
-  gem 'pry'
 end
 
 group :development do
