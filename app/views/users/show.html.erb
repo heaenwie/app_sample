@@ -7,14 +7,18 @@
         <%= @user.name %>
       </h1>
     </section>
-    <p><%= link_to "Edit", edit_user_path(current_user) %></p>
+    <p><%= link_to "Edit", edit_user_path(@user) %></p>
     <section class="detailed_info">
       Email: <p><%= @user.email %></p>
       Created at: <p><%= @user.created_at %></p>
       Updated at: <p><%= @user.updated_at %></p>
     </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
   <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
